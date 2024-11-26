@@ -1,0 +1,42 @@
+[
+    {
+        "title": "Articol despre declarațiile controversate",
+        "link": "https://exemplu.com/articol1",
+        "category": "Declarații Publice",
+        "date": "2024-11-01",
+        "description": "O analiză detaliată a declarațiilor recente făcute de candidat.",
+        "tags": ["declarații", "analiză", "politică"]
+    },
+    {
+        "title": "Raport de investigație jurnalistică",
+        "link": "https://exemplu.com/raport",
+        "category": "Investigații Jurnalistice",
+        "date": "2024-10-15",
+        "description": "Raport despre legăturile financiare suspecte ale candidatului.",
+        "tags": ["investigație", "finanțe", "corupție"]
+    },
+    {
+        "title": "Impactul declarațiilor extremistului asupra NATO",
+        "link": "https://exemplu.com/nato-impact",
+        "category": "Analize Politice",
+        "date": "2024-09-20",
+        "description": "O privire asupra implicațiilor politice pentru NATO.",
+        "tags": ["NATO", "politică", "extremism"]
+    },
+    {
+        "title": "Rolul diasporei în alegeri",
+        "link": "https://exemplu.com/diaspora",
+        "category": "Societate",
+        "date": "2024-11-10",
+        "description": "Un articol despre cum diaspora poate influența alegerile.",
+        "tags": ["diaspora", "alegeri", "societate"]
+    },
+    {
+        "title": "Masoneria și teoriile conspirației",
+        "link": "https://exemplu.com/masonerie",
+        "category": "Cultură",
+        "date": "2024-11-05",
+        "description": "Explorarea rolului masoneriei în teoriile conspirației recente.",
+        "tags": ["masonerie", "conspirație", "cultură"]
+    }
+]

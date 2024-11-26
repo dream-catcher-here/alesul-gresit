@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="about">
+    <div class="container">
+        <h2>Despre proiect</h2>
+        <p class="intro">
+            <strong>Alesul gresit</strong> este un proiect deschis, independent și transparent, creat cu scopul de a aduna articole documentate, resurse și fapte verificate despre subiecte de interes public. 
+            Nu suntem afiliați cu nicio instituție de presă, organizație politică sau corporație.
+        </p>
+
+        <div class="about-grid">
+            <div class="about-item">
+                <!-- <img src="{{ url_for('static', filename='images/objective-icon.png') }}" alt="Obiective"> -->
+                <h3>Obiectivele noastre</h3>
+                <ul>
+                    <li>Oferirea unui spațiu unde cetățenii pot accesa informații corecte și bine documentate.</li>
+                    <li>Crearea unei comunități implicate, care să contribuie cu resurse și să participe activ la lupta împotriva dezinformării.</li>
+                    <li>Consolidarea transparenței și promovarea unui dialog bazat pe fapte, nu pe opinii subiective sau manipulări.</li>
+                </ul>
+            </div>
+
+            <div class="about-item">
+                <!-- <img src="{{ url_for('static', filename='images/independence-icon.png') }}" alt="Independență"> -->
+                <h3>Independență și transparență</h3>
+                <p>
+                    Proiectul nu este finanțat de niciun partid politic, instituție sau grup de interese. Toate materialele publicate sunt bazate pe surse de încredere și documentație riguroasă, iar contribuțiile comunității sunt evaluate cu atenție înainte de a fi incluse.
+                </p>
+            </div>
+
+            <div class="about-item">
+                <!-- <img src="{{ url_for('static', filename='images/how-it-works-icon.png') }}" alt="Cum Funcționează"> -->
+                <h3>Cum funcționează?</h3>
+                <ul>
+                    <li><strong>Adunarea Resurselor:</strong> Oricine poate propune articole sau surse prin intermediul paginii noastre <a href="/help">Cum poți ajuta</a>.</li>
+                    <li><strong>Verificarea Informațiilor:</strong> Toate resursele trec printr-un proces de verificare pentru a ne asigura că respectă standardele noastre de calitate.</li>
+                    <li><strong>Publicare:</strong> Resursele aprobate sunt publicate și organizate pe categorii relevante.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="cta">
+            <h3>Contribuie la proiect</h3>
+            <p>
+                Această inițiativă depinde de sprijinul comunității. Poți contribui astfel:
+            </p>
+            <ul>
+                <li>Propunând articole sau resurse relevante.</li>
+                <li>Participând activ pe <a href="https://github.com/dream-catcher-here/alesul-gresit" target="_blank">GitHub</a> pentru a îmbunătăți funcționalitatea site-ului.</li>
+                <li>Distribuind informațiile către prieteni, familie și pe rețelele sociale.</li>
+            </ul>
+            <a href="/help" class="btn">Cum poți ajuta?</a>
+        </div>
+
+        <div class="acknowledgements">
+            <h3>Mulțumiri</h3>
+            <p>Mulțumim tuturor celor care sprijină această inițiativă prin timp, resurse și dedicare. Fiecare contribuție contează.</p>
+        </div>
+    </div>
+</section>
+{% endblock %}

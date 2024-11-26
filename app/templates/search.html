@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="search-results">
+    <div class="container">
+        <h2>Rezultate pentru "{{ query }}"</h2>
+        {% if results %}
+            <ul class="results-list">
+                {% for result in results %}
+                    <li class="result-item">
+                        <h3><a href="{{ result.link }}" target="_blank">{{ result.title }}</a></h3>
+                        <p>{{ result.description }}</p>
+                        <small>
+                            <strong>Categorie:</strong> {{ result.category }} |
+                            <strong>Data:</strong> {{ result.date }}
+                        </small>
+                        <div class="tags">
+                            {% for tag in result.tags %}
+                                <span class="tag">{{ tag }}</span>
+                            {% endfor %}
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>Nu s-au găsit rezultate pentru termenul căutat.</p>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}

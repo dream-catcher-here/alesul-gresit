@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="resources">
+    <div class="container">
+        <h2>Resurse</h2>
+        <p>O colecție de articole și resurse relevante despre situația actuală.</p>
+        
+        <ul class="resources-list">
+            {% for resource in resources %}
+                <li class="resource-item">
+                    <h3><a href="{{ resource.link }}" target="_blank">{{ resource.title }}</a></h3>
+                    <p>{{ resource.description }}</p>
+                    <small>
+                        <strong>Categorie:</strong> {{ resource.category }} |
+                        <strong>Data:</strong> {{ resource.date }}
+                    </small>
+                    <div class="tags">
+                        {% for tag in resource.tags %}
+                            <span class="tag">{{ tag }}</span>
+                        {% endfor %}
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</section>
+{% endblock %}

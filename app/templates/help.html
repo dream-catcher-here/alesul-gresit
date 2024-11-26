@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section>
+    <div class="container">
+        <h2>Cum poți ajuta?</h2>
+        <p>Acest proiect are scopul de a informa cetățenii și de a centraliza resurse documentate. Dacă ai informații relevante, poți contribui completând formularul de mai jos.</p>
+        <p>Pentru detalii tehnice și contribuții la codul sursă, vizitează repository-ul nostru pe
+            <a href="https://github.com/dream-catcher-here/alesul-gresit" target="_blank">GitHub</a>.
+        </p>
+
+        {% if success %}
+        <p style="color: green;">Mulțumim! Resursa ta a fost trimisă cu succes.</p>
+        {% endif %}
+
+        <form method="POST" action="{{ url_for('main.help_page') }}">
+            <div>
+                <label for="name">Nume:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div>
+                <label for="link">Link sursă:</label>
+                <input type="url" id="link" name="link" placeholder="https://exemplu.com" required>
+            </div>
+            <div>
+                <label for="message">Mesaj:</label>
+                <textarea id="message" name="message" rows="4" placeholder="Detalii despre resursa propusă..." required></textarea>
+            </div>
+            <div>
+                <button type="submit">Trimite resursa</button>
+            </div>
+        </form>
+    </div>
+</section>
+{% endblock %}

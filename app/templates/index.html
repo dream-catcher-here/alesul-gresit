@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="hero">
+    <div class="container">
+        <h1>Adevărul contează.</h1>
+        <p>Descoperă faptele și adevărul. Informează-te înainte de a vota.</p>
+        <a href="/about" class="btn">Despre candidat</a>
+        <a href="/resources" class="btn">Resurse</a>
+        <a href="/glossary" class="btn">Glosar</a>
+        <a href="/help" class="btn">Cum poți ajuta?</a>
+    </div>
+</section>
+
+<section class="stats">
+    <div class="container">
+        <h2>Statistici relevante</h2>
+        <div class="stats-grid">
+            <div class="stat-item">
+                <h3>{{ stats.total_resources }}</h3>
+                <p>Resurse Documentate</p>
+            </div>
+            <div class="stat-item">
+                <h3>{{ stats.unique_categories }}</h3>
+                <p>Categorii Distincte</p>
+            </div>
+            <div class="stat-item">
+                <h3>{{ stats.recent_visitors | format_number }}</h3>
+                <p>Vizitatori Recenți</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="recent-resources">
+    <div class="container">
+        <h2>Articole recente</h2>
+        <ul>
+            {% for resource in resources[:5] %}
+                <li>
+                    <h3><a href="{{ resource.link }}" target="_blank">{{ resource.title }}</a></h3>
+                    <p>{{ resource.description }}</p>
+                    <small><strong>Data:</strong> {{ resource.date }}</small>
+                </li>
+            {% endfor %}
+        </ul>
+        <a href="/resources" class="btn">Vezi toate resursele</a>
+    </div>
+</section>
+
+<section class="trusted-sources">
+    <div class="container">
+        <h2>Surse</h2>
+        <div class="source-logos">
+            <div class="source-item">
+                <a href="https://dexonline.ro" target="_blank">
+                    <img src="{{ url_for('static', filename='images/dexonline-logo.png') }}" alt="DEX Online">
+                </a>
+            </div>
+            <div class="source-item">
+                <a href="https://hotnews.ro" target="_blank">
+                    <img src="{{ url_for('static', filename='images/hotnews-logo.png') }}" alt="HotNews">
+                </a>
+            </div>
+            <div class="source-item">
+                <a href="https://pressone.ro" target="_blank">
+                    <img src="{{ url_for('static', filename='images/pressone-logo.png') }}" alt="PressOne">
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

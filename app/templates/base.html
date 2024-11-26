@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <!-- Importăm fontul Roboto din Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-left">
+                <h1><a href="/">Alesul gresit</a></h1>
+            </div>
+            <div class="header-right">
+                <form action="/search" method="get" class="search-bar">
+                    <input type="text" name="q" placeholder="Caută resurse..." />
+                    <button type="submit">🔍</button>
+                </form>
+                <nav>
+                    <ul>
+                        <li><a href="/">Acasă</a></li>
+                        <li><a href="/about">Despre</a></li>
+                        <li><a href="/resources">Resurse</a></li>
+                        <li><a href="/glossary">Glosar</a></li>
+                        <li><a href="/help">Cum poți ajuta?</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <footer>
+        <p>&copy; 2024 Alesul gresit. Toate drepturile rezervate. <a href="https://github.com/dream-catcher-here/alesul-gresit" target="_blank">Contribuie pe GitHub</a></p>
+    </footer>
+</body>
+</html>
