@@ -4,11 +4,13 @@ from datetime import datetime
 from werkzeug.utils import secure_filename
 import os
 import json
+from flask import send_from_directory
+from bson.objectid import ObjectId
 
 
 main = Blueprint("main", __name__)
 
-UPLOAD_FOLDER = "uploads"
+UPLOAD_FOLDER = "./app/static/uploads"
 ALLOWED_EXTENSIONS = {"png", "jpg", "jpeg", "gif", "pdf", "docx", "txt"}
 
 # Ensure the upload folder exists
@@ -195,3 +197,54 @@ def glossary():
         }
     }
     return render_template("glossary.html", title="Glosar", terms=terms)
+
+@main.route("/voices", methods=["GET", "POST"])
+def voices():
+    if request.method == "POST":
+        # Collect form data and save to MongoDB
+        name = request.form.get("name")
+        email = request.form.get("email")
+        title = request.form.get("title")
+        content = request.form.get("content")
+        file = request.files.get("file")
+
+        # Handle file upload
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            file.save(os.path.join(UPLOAD_FOLDER, filename))
+            image_url = filename
+        else:
+            image_url = None
+
+        # Insert into MongoDB
+        db["voices"].insert_one({
+            "name": name,
+            "email": email,
+            "title": title,
+            "content": content,
+            "image_url": image_url,
+            "timestamp": datetime.utcnow()
+        })
+
+        # Redirect with a success message
+        return redirect(url_for("main.voices", success=True))
+
+    # Check for success parameter in GET request
+    success = request.args.get("success")
+    articles = list(db["voices"].find().sort("timestamp", -1))
+    return render_template("voices.html", title="Vocea Ta", articles=articles, success=success)
+
+@main.route("/voices/<article_id>")
+def article_detail(article_id):
+    try:
+        article = db["voices"].find_one({"_id": ObjectId(article_id)})
+        if not article:
+            return "Articolul nu a fost găsit.", 404
+    except Exception as e:
+        return f"Eroare: {str(e)}", 400
+    return render_template("article_detail.html", title=article["title"], article=article)
+
+
+@main.route("/uploads/<filename>")
+def uploaded_file(filename):
+    return send_from_directory(UPLOAD_FOLDER, filename)

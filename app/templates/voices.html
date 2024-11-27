@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section>
+    <div class="container">
+        <h2>Vocea Ta</h2>
+        <p>Aceasta este o platformă deschisă unde jurnaliști independenți și cetățenii pot publica articole și opinii documentate.</p>
+        <p>Trimite-ți contribuția completând formularul de mai jos sau citește articolele publicate mai jos.</p>
+
+        {% if success %}
+        <div class="success-message">
+            <p style="color: green;"> Mulțumim! Articolul tău a fost trimis cu succes și va fi revizuit înainte de publicare.</p>
+        </div>
+        {% endif %}
+
+        <!-- Article Submission Form -->
+        <form method="POST" action="{{ url_for('main.voices') }}" enctype="multipart/form-data">
+            <div>
+                <label for="name">Nume:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div>
+                <label for="title">Titlu:</label>
+                <input type="text" id="title" name="title" required>
+            </div>
+            <div>
+                <label for="content">Conținut:</label>
+                <textarea id="content" name="content" rows="8" required></textarea>
+            </div>
+            <div>
+                <label for="file">Imagine (opțional):</label>
+                <input type="file" id="file" name="file">
+            </div>
+            <div>
+                <button type="submit">Trimite articolul</button>
+            </div>
+        </form>
+
+        <hr>
+
+        <!-- Published Articles -->
+        <h3>Articole Publicate</h3>
+        <ul>
+            {% for article in articles %}
+            <li>
+                <h4>{{ article.title }}</h4>
+                <p><strong>Autor:</strong> {{ article.name }}</p>
+                <p>{{ article.content[:200] }}... <a href="{{ url_for('main.article_detail', article_id=article['_id']) }}">Citește mai mult</a>
+                {% if article.image_url %}
+                <img src="{{ url_for('main.uploaded_file', filename=article.image_url) }}" alt="{{ article.title }}" width="200">
+                {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</section>
+{% endblock %}

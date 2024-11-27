@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section>
+    <div class="container">
+        <h2>{{ article.title }}</h2>
+        <p><strong>Autor:</strong> {{ article.name }}</p>
+        <p>{{ article.content }}</p>
+        {% if article.image_url %}
+        <img src="{{ url_for('main.uploaded_file', filename=article.image_url) }}" alt="{{ article.title }}" width="500">
+        {% endif %}
+        <p><em>Publicat la: {{ article.timestamp.strftime('%Y-%m-%d %H:%M:%S') }}</em></p>
+    </div>
+</section>
+{% endblock %}
