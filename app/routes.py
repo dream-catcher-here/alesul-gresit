@@ -1,11 +1,22 @@
 from flask import render_template, request, Blueprint, redirect, url_for
 from pymongo import MongoClient
 from datetime import datetime
+from werkzeug.utils import secure_filename
 import os
 import json
-import ssl
+
 
 main = Blueprint("main", __name__)
+
+UPLOAD_FOLDER = "uploads"
+ALLOWED_EXTENSIONS = {"png", "jpg", "jpeg", "gif", "pdf", "docx", "txt"}
+
+# Ensure the upload folder exists
+if not os.path.exists(UPLOAD_FOLDER):
+    os.makedirs(UPLOAD_FOLDER)
+
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 # Use the MongoDB Atlas connection string
 MONGO_URI = os.getenv("MONGO_URI")  # Load from environment or use .env setup
@@ -38,6 +49,15 @@ def help_page():
         email = request.form.get("email")
         link = request.form.get("link")
         message = request.form.get("message")
+        file = request.files.get("file")
+
+        # Handle file upload
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            file.save(os.path.join(UPLOAD_FOLDER, filename))
+            file_path = os.path.join(UPLOAD_FOLDER, filename)
+        else:
+            file_path = None  # No file uploaded or invalid file type
 
         # Insert into MongoDB Atlas
         help_collection.insert_one({
@@ -45,7 +65,8 @@ def help_page():
             "email": email,
             "link": link,
             "message": message,
-            "timestamp": datetime.utcnow()  # Add timestamp
+            "file_path": file_path,  # Store the uploaded file path
+            "timestamp": datetime.utcnow()
         })
 
         # Redirect with success message

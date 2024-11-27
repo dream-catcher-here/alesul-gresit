@@ -5,7 +5,8 @@ import os
 def create_app():
     app = Flask(__name__)
     app.config.from_object("config")
-
+    app.config['MAX_CONTENT_LENGTH'] = 25 * 1024 * 1024  # 25 MB
+    
     # Load environment variables from .env
     load_dotenv()
 

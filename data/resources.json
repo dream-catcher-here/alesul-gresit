@@ -5,7 +5,8 @@
         "category": "Declarații Publice",
         "date": "2024-11-01",
         "description": "O analiză detaliată a declarațiilor recente făcute de candidat.",
-        "tags": ["declarații", "analiză", "politică"]
+        "tags": ["declarații", "analiză", "politică"],
+        "added": "admin"
     },
     {
         "title": "Raport de investigație jurnalistică",
@@ -13,7 +14,8 @@
         "category": "Investigații Jurnalistice",
         "date": "2024-10-15",
         "description": "Raport despre legăturile financiare suspecte ale candidatului.",
-        "tags": ["investigație", "finanțe", "corupție"]
+        "tags": ["investigație", "finanțe", "corupție"],
+        "added": "admin"
     },
     {
         "title": "Impactul declarațiilor extremistului asupra NATO",
@@ -21,7 +23,8 @@
         "category": "Analize Politice",
         "date": "2024-09-20",
         "description": "O privire asupra implicațiilor politice pentru NATO.",
-        "tags": ["NATO", "politică", "extremism"]
+        "tags": ["NATO", "politică", "extremism"],
+        "added": "admin"
     },
     {
         "title": "Rolul diasporei în alegeri",
@@ -29,7 +32,8 @@
         "category": "Societate",
         "date": "2024-11-10",
         "description": "Un articol despre cum diaspora poate influența alegerile.",
-        "tags": ["diaspora", "alegeri", "societate"]
+        "tags": ["diaspora", "alegeri", "societate"],
+        "added": "admin"
     },
     {
         "title": "Masoneria și teoriile conspirației",
@@ -37,6 +41,7 @@
         "category": "Cultură",
         "date": "2024-11-05",
         "description": "Explorarea rolului masoneriei în teoriile conspirației recente.",
-        "tags": ["masonerie", "conspirație", "cultură"]
+        "tags": ["masonerie", "conspirație", "cultură"],
+        "added": "admin"
     }
 ]

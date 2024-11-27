@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="glossary">
+    <div class="container">
+        <h2>Glosar</h2>
+        <p>Aici găsești definițiile unor termeni importanți, conform DEX. Poți explora mai multe detalii pe <a href="https://dexonline.ro" target="_blank">dexonline.ro</a>.</p>
+
+        <!-- Search Bar -->
+        <input type="text" id="search-bar" placeholder="Caută un termen..." onkeyup="filterTerms()">
+
+        <!-- Glossary Terms -->
+        <ul id="glossary-list">
+            {% for term, data in terms.items() %}
+                <li>
+                    <strong>{{ term }}</strong>: {{ data.definition }} 
+                    <a href="{{ data.link }}" target="_blank" class="dex-link">[Vezi pe DEX]</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</section>
+
+<script>
+    function filterTerms() {
+        const input = document.getElementById("search-bar").value.toLowerCase();
+        const items = document.getElementById("glossary-list").getElementsByTagName("li");
+
+        for (let i = 0; i < items.length; i++) {
+            const term = items[i].textContent || items[i].innerText;
+            if (term.toLowerCase().includes(input)) {
+                items[i].style.display = "";
+            } else {
+                items[i].style.display = "none";
+            }
+        }
+    }
+</script>
+{% endblock %}
